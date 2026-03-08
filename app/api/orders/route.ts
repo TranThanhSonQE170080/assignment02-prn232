@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 type OrderItemRow = {
@@ -62,7 +62,7 @@ export async function GET() {
   return NextResponse.json(orders);
 }
 
-export async function POST(_req: NextRequest) {
+export async function POST() {
   const supabase = await createSupabaseServerClient();
   const {
     data: { user },

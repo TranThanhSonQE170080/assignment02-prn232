@@ -80,24 +80,19 @@ export default function EditProductPage() {
         <button
           type="button"
           onClick={handleDelete}
-          className="rounded-md border border-red-200 px-3 py-1 text-xs font-medium text-red-700 hover:bg-red-50"
+          className="rounded-md border border-red-200 px-3 py-1 text-xs font-medium text-red-700 transition hover:bg-red-50"
         >
           Delete
         </button>
       </div>
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-4 bg-white p-6 rounded-lg border border-zinc-200"
-      >
+      <form onSubmit={handleSubmit} className="surface-card space-y-4 p-6">
         <div>
-          <label className="block text-sm font-medium text-zinc-700">
-            Name
-          </label>
+          <label className="block text-sm font-medium text-zinc-700">Name</label>
           <input
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+            className="app-input mt-1"
           />
         </div>
         <div>
@@ -108,14 +103,12 @@ export default function EditProductPage() {
             required
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+            className="app-input mt-1"
             rows={3}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-zinc-700">
-            Price
-          </label>
+          <label className="block text-sm font-medium text-zinc-700">Price</label>
           <input
             type="number"
             min="0"
@@ -123,7 +116,7 @@ export default function EditProductPage() {
             required
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+            className="app-input mt-1"
           />
         </div>
         <div>
@@ -134,13 +127,13 @@ export default function EditProductPage() {
             type="url"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
-            className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+            className="app-input mt-1"
           />
         </div>
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button
           type="submit"
-          className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800"
+          className="app-button-primary px-4 py-2 text-sm transition"
         >
           Save changes
         </button>
@@ -148,4 +141,3 @@ export default function EditProductPage() {
     </div>
   );
 }
-

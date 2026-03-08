@@ -43,16 +43,14 @@ export default function NewProductPage() {
   return (
     <div className="max-w-xl space-y-6">
       <h1 className="text-2xl font-semibold text-zinc-900">New product</h1>
-      <form onSubmit={handleSubmit} className="space-y-4 bg-white p-6 rounded-lg border border-zinc-200">
+      <form onSubmit={handleSubmit} className="surface-card space-y-4 p-6">
         <div>
-          <label className="block text-sm font-medium text-zinc-700">
-            Name
-          </label>
+          <label className="block text-sm font-medium text-zinc-700">Name</label>
           <input
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+            className="app-input mt-1"
           />
         </div>
         <div>
@@ -63,14 +61,12 @@ export default function NewProductPage() {
             required
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+            className="app-input mt-1"
             rows={3}
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-zinc-700">
-            Price
-          </label>
+          <label className="block text-sm font-medium text-zinc-700">Price</label>
           <input
             type="number"
             min="0"
@@ -78,7 +74,7 @@ export default function NewProductPage() {
             required
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+            className="app-input mt-1"
           />
         </div>
         <div>
@@ -89,14 +85,14 @@ export default function NewProductPage() {
             type="url"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
-            className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+            className="app-input mt-1"
           />
         </div>
         {error && <p className="text-sm text-red-600">{error}</p>}
         <button
           type="submit"
           disabled={loading}
-          className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 disabled:opacity-60"
+          className="app-button-primary px-4 py-2 text-sm transition disabled:opacity-60"
         >
           {loading ? "Saving..." : "Create product"}
         </button>
@@ -104,4 +100,3 @@ export default function NewProductPage() {
     </div>
   );
 }
-

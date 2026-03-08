@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CheckoutSuccessPage() {
   return (
-    <div className="max-w-xl space-y-4">
+    <div className="surface-card max-w-xl space-y-4 p-6">
       <h1 className="text-2xl font-semibold text-zinc-900">
         Payment successful
       </h1>
@@ -13,7 +13,7 @@ export default function CheckoutSuccessPage() {
       <div className="flex gap-3">
         <Link
           href="/orders"
-          className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800"
+          className="app-button-primary px-4 py-2 text-sm transition"
         >
           View orders
         </Link>

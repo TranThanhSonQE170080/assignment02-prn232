@@ -59,24 +59,29 @@ export default function CartPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-semibold text-zinc-900">Your cart</h1>
+      <div>
+        <h1 className="text-2xl font-semibold text-zinc-900">Your cart</h1>
+        <p className="mt-1 text-sm text-zinc-600">
+          Review items before heading to checkout.
+        </p>
+      </div>
       {loading ? (
-        <p className="text-sm text-zinc-600">Loading...</p>
+        <div className="surface-card p-6 text-sm text-zinc-600">Loading...</div>
       ) : items.length === 0 ? (
-        <p className="text-sm text-zinc-600">
+        <div className="surface-card p-6 text-sm text-zinc-600">
           Your cart is empty. Browse{" "}
-          <Link href="/products" className="text-zinc-900 underline">
+          <Link href="/products" className="font-medium text-zinc-900 underline">
             products
           </Link>
           .
-        </p>
+        </div>
       ) : (
         <>
           <ul className="space-y-3">
             {items.map((item) => (
               <li
                 key={item.id}
-                className="flex items-center justify-between rounded-lg border border-zinc-200 bg-white px-4 py-3"
+                className="surface-card flex items-center justify-between px-4 py-3"
               >
                 <div className="flex items-center gap-3">
                   {item.product.image_url && (
@@ -104,7 +109,7 @@ export default function CartPage() {
                     onChange={(e) =>
                       updateQuantity(item.product.id, Number(e.target.value))
                     }
-                    className="w-16 rounded-md border border-zinc-300 px-2 py-1 text-sm"
+                    className="app-input w-16 px-2 py-1"
                   />
                   <button
                     type="button"
@@ -123,7 +128,7 @@ export default function CartPage() {
             </p>
             <Link
               href="/checkout"
-              className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800"
+              className="app-button-primary px-4 py-2 text-sm transition hover:bg-zinc-800"
             >
               Checkout
             </Link>

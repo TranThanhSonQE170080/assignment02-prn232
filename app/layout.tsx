@@ -26,19 +26,19 @@ async function NavBar() {
   } = await supabase.auth.getUser();
 
   return (
-    <header className="border-b border-zinc-200 bg-white">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
-        <Link href="/" className="text-lg font-semibold tracking-tight">
-          Clothing Store
+    <header className="sticky top-0 z-30 border-b border-zinc-200/80 bg-white/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <Link href="/" className="text-lg font-semibold tracking-tight text-zinc-900">
+          Threadly
         </Link>
         <nav className="flex items-center gap-4 text-sm">
-          <Link href="/products" className="text-zinc-700 hover:text-black">
+          <Link href="/products" className="text-zinc-700 transition hover:text-black">
             Products
           </Link>
-          <Link href="/cart" className="text-zinc-700 hover:text-black">
+          <Link href="/cart" className="text-zinc-700 transition hover:text-black">
             Cart
           </Link>
-          <Link href="/orders" className="text-zinc-700 hover:text-black">
+          <Link href="/orders" className="text-zinc-700 transition hover:text-black">
             Orders
           </Link>
           {user ? (
@@ -49,7 +49,7 @@ async function NavBar() {
               <form action="/api/auth/logout" method="post">
                 <button
                   type="submit"
-                  className="rounded-full border border-zinc-300 px-3 py-1 text-xs font-medium hover:bg-zinc-100"
+                  className="rounded-full border border-zinc-300 px-3 py-1 text-xs font-medium transition hover:bg-zinc-100"
                 >
                   Logout
                 </button>
@@ -59,13 +59,13 @@ async function NavBar() {
             <>
               <Link
                 href="/login"
-                className="text-zinc-700 hover:text-black font-medium"
+                className="font-medium text-zinc-700 transition hover:text-black"
               >
                 Login
               </Link>
               <Link
                 href="/register"
-                className="rounded-full bg-black px-3 py-1 text-xs font-medium text-white hover:bg-zinc-800"
+                className="rounded-full bg-black px-3 py-1 text-xs font-medium text-white transition hover:bg-zinc-800"
               >
                 Sign up
               </Link>
@@ -89,7 +89,7 @@ export default function RootLayout({
       >
         {/* Async Server Component */}
         <NavBar />
-        <main className="mx-auto max-w-5xl px-4 py-8">{children}</main>
+        <main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
       </body>
     </html>
   );

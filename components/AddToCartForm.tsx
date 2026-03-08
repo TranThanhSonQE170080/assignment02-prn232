@@ -45,13 +45,13 @@ export function AddToCartForm({ productId }: Props) {
           min={1}
           value={quantity}
           onChange={(e) => setQuantity(Number(e.target.value) || 1)}
-          className="mt-1 w-24 rounded-md border border-zinc-300 px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+          className="app-input mt-1 w-24"
         />
       </div>
       <button
         type="submit"
         disabled={submitting}
-        className="w-full rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800 disabled:opacity-60"
+        className="app-button-primary w-full px-4 py-2 text-sm transition disabled:opacity-60"
       >
         {submitting ? "Adding..." : "Add to cart"}
       </button>

@@ -2,9 +2,7 @@ import { cookies } from "next/headers";
 import { CookieOptions, createServerClient } from "@supabase/ssr";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export async function createSupabaseServerClient(): Promise<
-  SupabaseClient<any, "public", any>
-> {
+export async function createSupabaseServerClient(): Promise<SupabaseClient> {
   const cookieStore = await cookies();
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -22,10 +20,20 @@ export async function createSupabaseServerClient(): Promise<
         return cookieStore.get(name)?.value;
       },
       async set(name: string, value: string, options: CookieOptions) {
-        await cookieStore.set({ name, value, ...options });
+        try {
+          await cookieStore.set({ name, value, ...options });
+        } catch {
+          // Server Components cannot mutate cookies. Writes are handled in
+          // Server Actions/Route Handlers where mutation is allowed.
+        }
       },
       async remove(name: string, options: CookieOptions) {
-        await cookieStore.set({ name, value: "", ...options });
+        try {
+          await cookieStore.set({ name, value: "", ...options });
+        } catch {
+          // Server Components cannot mutate cookies. Writes are handled in
+          // Server Actions/Route Handlers where mutation is allowed.
+        }
       },
     },
   });

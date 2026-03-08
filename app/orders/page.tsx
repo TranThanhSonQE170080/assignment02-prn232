@@ -27,9 +27,9 @@ export default async function OrdersPage() {
 
   if (!user) {
     return (
-      <p className="text-sm text-zinc-600">
+      <div className="surface-card p-6 text-sm text-zinc-600">
         Please login to see your orders.
-      </p>
+      </div>
     );
   }
 
@@ -57,13 +57,18 @@ export default async function OrdersPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-semibold text-zinc-900">Order history</h1>
+      <div>
+        <h1 className="text-2xl font-semibold text-zinc-900">Order history</h1>
+        <p className="mt-1 text-sm text-zinc-600">
+          Track recent purchases and order totals.
+        </p>
+      </div>
       {orders && ((orders as unknown as Order[]).length > 0) ? (
         <ul className="space-y-4">
           {(orders as unknown as Order[]).map((order) => (
             <li
               key={order.id}
-              className="space-y-2 rounded-lg border border-zinc-200 bg-white p-4"
+              className="surface-card space-y-2 p-4"
             >
               <div className="flex items-center justify-between text-sm">
                 <span className="font-medium text-zinc-900">
@@ -95,9 +100,9 @@ export default async function OrdersPage() {
           ))}
         </ul>
       ) : (
-        <p className="text-sm text-zinc-600">
+        <div className="surface-card p-6 text-sm text-zinc-600">
           You don&apos;t have any orders yet.
-        </p>
+        </div>
       )}
     </div>
   );

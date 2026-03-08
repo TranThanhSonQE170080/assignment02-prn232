@@ -31,9 +31,12 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-zinc-50">
-      <div className="w-full max-w-md bg-white rounded-xl shadow p-8 space-y-6">
+    <div className="flex min-h-screen items-center justify-center">
+      <div className="surface-card w-full max-w-md space-y-6 p-8">
         <h1 className="text-2xl font-semibold text-zinc-900">Login</h1>
+        <p className="-mt-3 text-sm text-zinc-600">
+          Welcome back. Sign in to manage products and checkout faster.
+        </p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-zinc-700">
@@ -44,7 +47,7 @@ export default function LoginPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+              className="app-input mt-1"
             />
           </div>
           <div>
@@ -56,7 +59,7 @@ export default function LoginPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full rounded-md border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-900"
+              className="app-input mt-1"
             />
           </div>
           {error && (
@@ -67,7 +70,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-md bg-zinc-900 text-white py-2 text-sm font-medium hover:bg-zinc-800 disabled:opacity-60"
+            className="app-button-primary w-full py-2 text-sm transition disabled:opacity-60"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
@@ -82,4 +85,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
